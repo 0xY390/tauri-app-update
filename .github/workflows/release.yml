@@ -105,34 +105,4 @@ jobs:
           prerelease: false
           args: --target ${{ matrix.target }}
 
-      - name: Upload to web server
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UPLOAD_API_URL: 'https://api.qz.run/upload-release-file'
-        run: |
-          echo "output->uploader start"
-          node scripts/updater.mjs
-          echo "output->uploader end"
-
-          # 获取版本号（去掉v前缀）
-          VERSION=${GITHUB_REF_NAME#v}
-
-
-          # 根据不同平台设置文件路径和文件名
-          if [[ "${{ matrix.target }}" == "x86_64-pc-windows-gnu" ]]; then
-            LOCAL_FILE=$(ls src-tauri/target/${{ matrix.target }}/release/bundle/msi/*.msi)
-            PLATFORM="windows-x64"
-          elif [[ "${{ matrix.target }}" == "x86_64-apple-darwin" ]]; then
-            LOCAL_FILE=$(ls src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg)
-            PLATFORM="macos-x64"
-          else
-            LOCAL_FILE=$(ls src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg)
-            PLATFORM="macos-arm64"
-          fi
-
-          # 使用 curl 上传文件
-          curl -X POST "${UPLOAD_API_URL}" \
-            -F "file=@${LOCAL_FILE}" \
-            -F "version=${VERSION}" \
-            -F "platform=${PLATFORM}"
+      

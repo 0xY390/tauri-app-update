@@ -6,7 +6,7 @@ import { readFile } from "node:fs/promises";
 const octokit = getOctokit(process.env.GITHUB_TOKEN);
 
 const updateRelease = async () => {
-
+  console.log(`output->start update assets`,)
   // 获取当前版本的 tag 名称（去掉 refs/tags/v 前缀）
   let currentTag;
   if (context.ref.startsWith('refs/tags/')) {

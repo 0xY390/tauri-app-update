@@ -1,0 +1,138 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            arch: aarch64
+            target: aarch64-apple-darwin
+          - os: macos-latest
+            arch: x64
+            target: x86_64-apple-darwin
+          - os: windows-latest
+            arch: x64
+            target: x86_64-pc-windows-gnu
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install frontend dependencies
+        run: pnpm install
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Setup Windows GNU environment
+        if: matrix.target == 'x86_64-pc-windows-gnu'
+        shell: bash
+        run: |
+          # 设置 GNU 工具链
+          rustup override set stable-x86_64-pc-windows-gnu
+          # 安装必要的组件
+          rustup component add --toolchain stable-x86_64-pc-windows-gnu rustfmt
+          # 设置环境变量
+          echo "CC=gcc" >> $GITHUB_ENV
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Update resources config
+        shell: bash
+        run: |
+          # 清空 resources 配置，避免打包不存在的文件
+          jq '.bundle.resources = []' src-tauri/tauri.conf.json > temp.json && mv temp.json src-tauri/tauri.conf.json
+
+      - name: Debug version
+        shell: bash
+        run: |
+          echo "Current version in tauri.conf.json:"
+          cat src-tauri/tauri.conf.json | jq .version
+          echo "Current tag version:"
+          echo ${GITHUB_REF_NAME#v}
+
+      - name: Build the app
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_UPDATE_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_UPDATE_PRIVATE_KEY_PASSWORD }}
+          NODE_ENV: production
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: 'App ${{ github.ref_name }}'
+          releaseBody: 'See the assets to download and install this version.'
+          releaseDraft: true
+          prerelease: false
+          args: --target ${{ matrix.target }}
+
+      - name: Upload to web server
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UPLOAD_API_URL: 'https://api.qz.run/upload-release-file'
+        run: |
+          echo "output->uploader start"
+          node scripts/updater.mjs
+          echo "output->uploader end"
+
+          # 获取版本号（去掉v前缀）
+          VERSION=${GITHUB_REF_NAME#v}
+
+
+          # 根据不同平台设置文件路径和文件名
+          if [[ "${{ matrix.target }}" == "x86_64-pc-windows-gnu" ]]; then
+            LOCAL_FILE=$(ls src-tauri/target/${{ matrix.target }}/release/bundle/msi/*.msi)
+            PLATFORM="windows-x64"
+          elif [[ "${{ matrix.target }}" == "x86_64-apple-darwin" ]]; then
+            LOCAL_FILE=$(ls src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg)
+            PLATFORM="macos-x64"
+          else
+            LOCAL_FILE=$(ls src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg)
+            PLATFORM="macos-arm64"
+          fi
+
+          # 使用 curl 上传文件
+          curl -X POST "${UPLOAD_API_URL}" \
+            -F "file=@${LOCAL_FILE}" \
+            -F "version=${VERSION}" \
+            -F "platform=${PLATFORM}"

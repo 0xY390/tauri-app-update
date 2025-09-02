@@ -31,7 +31,7 @@
       "active": true,
       "endpoints": ["http://localhost:3000/updates?version={{current_version}}&target={{target}}"],
       "dialog": true,
-      "pubkey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqQzQ4XDCXI9J4uYOfxK53C9AftnGvKr2Xy6LTYD5Ugu1UgM3Dsc2wF7avgyYTqNIOG4sew520sTcNZf5Bm0XOGmYq1Uaa3TlbM+SRMSQ4MMM6QoErhC7wgatARomOS176ZaMCeoFWZOSdgH0e14tAEPBqyLBf31zmpBKSaax36LLzJapAN5OZIyiXeykKDmcTN4aUetuwfiKsI+H2WAtf8YtCVeTXUQN+gNjIsMsxLbCG2KG2HdsFIEd0FP9r/uN3fiIdGBV9X39YSKraoWZ796yCbXommzHhCf5mTbZLFng0Y7SAEUYXBzUNQ+WOdoOGyWQsxwcie1wmU/Tne+/zwIDAQAB"
+      "pubkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5uRqL2fGh6/E7ssFS6Qv\nb/Sk1kI6jiNfwNARJsX5GAs5HFziWCH1jiIres4/MOjb59u1algTT86HxMxehFwR\nGqR1C1r9tWr0Tu2SQaft9wMlfgCpGv7uOfupNICDQY7dwxj6zsO5Z/7ueiyh55Di\nex77tlIcQxde2bL1ffwi6c+GFuvipm82eeZ/OubIbvv9p4ZCTFnQjMXr4P9lD+CK\nZXY4mugR4+TjAdg4PWfjfZuUYz0a1+n/oEuHSu6VJanb0Vil3whQthyiguUnxQF6\nqORDBqya9t0gDyx+8yPH+fECS7tSKG5Qm01Y4YYGfm6OtnO/wq15tu649Djttpnp\nDQIDAQAB\n-----END PUBLIC KEY-----"
     }
   }
 }

@@ -7,6 +7,7 @@
 
 import * as url from 'url';
 import * as http from 'http';
+import * as fs from 'fs';
 
 // 模拟的更新数据
 const updateData = {
@@ -19,8 +20,8 @@ const updateData = {
       "url": "http://localhost:3000/downloads/app-v0.2.0.dmg"
     },
     "darwin-aarch64": {
-      "signature": "模拟签名 - 在实际使用中应该是真实的RSA签名",
-      "url": "http://localhost:3000/downloads/app-v0.2.0.dmg"
+      "signature": "wpNsg5J1/oqbhdpFANxWzAjsFUNfSh6KCxtTyqL2qx88z7E3gLV20gFT1N4UnsqQB7VL9L5DPD+iLQq3Kn2KydQZzYOztfvnlTPRy71v7Uun8pXXgKOSOv4G+uKGUtsHNYWeScEWKQgtSQeMBOl05dfUZbuQovX9zhfKMVznwVABAt4WCUuxoh8HXSkZxA3x5IHUIJ+lo2YR/g2V/nf4EW8k9cXogYBndHYkYtO6hhZLQ7HYjRSX5rcwn57utH8ulVVn8Yd1SA1EBwcgZjA+INXocejLrw4PcQwgxK3IXtU0NzEHRPDz+/EMlqyPrVWem8lHSgm3DHutZp/jjEROvw==",
+      "url": "http://localhost:3000/downloads/tauri-app-update_0.2.0_aarch64.dmg"
     },
     "linux-x86_64": {
       "signature": "模拟签名 - 在实际使用中应该是真实的RSA签名",

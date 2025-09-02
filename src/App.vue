@@ -19,35 +19,37 @@ async function checkForUpdates() {
     isChecking.value = true;
     updateStatus.value = '正在检查更新...';
 
-    console.log(`output->check`,check)
+    console.log(`output->check`, check);
     const update = await check();
-    console.log(`output->update`,update)
+    console.log(`output->update`, update);
     if (update) {
+      // await update.downloadAndInstall()
       console.log(`found update ${update.version} from ${update.date} with notes ${update.body}`);
-      // let downloaded = 0;
-      // let contentLength = 0;
+      let downloaded = 0;
+      let contentLength = 0;
       // alternatively we could also call update.download() and update.install() separately
-      // await update.downloadAndInstall((event) => {
-      //   switch (event.event) {
-      //     case 'Started':
-      //       contentLength = event.data.contentLength ?? 0;
-      //       console.log(`started downloading ${event.data.contentLength} bytes`);
-      //       break;
-      //     case 'Progress':
-      //       downloaded += event.data.chunkLength;
-      //       console.log(`downloaded ${downloaded} from ${contentLength}`);
-      //       break;
-      //     case 'Finished':
-      //       console.log('download finished');
-      //       break;
-      //   }
-      // });
+      await update.downloadAndInstall((event) => {
+        switch (event.event) {
+          case 'Started':
+            contentLength = event.data.contentLength ?? 0;
+            console.log(`started downloading ${event.data.contentLength} bytes`);
+            break;
+          case 'Progress':
+            downloaded += event.data.chunkLength;
+            console.log(`downloaded ${downloaded} from ${contentLength}`);
+            break;
+          case 'Finished':
+            console.log('download finished');
+            break;
+        }
+      });
 
-      // console.log('update installed');
+      console.log('update installed');
       await relaunch();
     }
     updateStatus.value = '更新检查完成';
   } catch (error) {
+    console.log(`output->error`, error);
     updateStatus.value = `更新失败: ${error}`;
   } finally {
     isChecking.value = false;

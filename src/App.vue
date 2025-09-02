@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import { getVersion } from '@tauri-apps/api/app';
 
 const version = ref('');
-const greetMsg = ref('');
 
 async function init() {
   version.value = await getVersion();

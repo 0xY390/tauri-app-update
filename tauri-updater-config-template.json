@@ -1,0 +1,10 @@
+{
+  "updater": {
+    "active": true,
+    "endpoints": [
+      "https://your-update-server.com/updates?version={{current_version}}&target={{target}}"
+    ],
+    "dialog": true,
+    "pubkey": "-----BEGIN PUBLIC KEY-----\nYOUR_PUBLIC_KEY_HERE\n-----END PUBLIC KEY-----"
+  }
+}

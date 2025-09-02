@@ -1,147 +1,218 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { getVersion } from '@tauri-apps/api/app';
+import { invoke } from '@tauri-apps/api/core';
+import { check } from '@tauri-apps/plugin-updater';
+import { relaunch } from '@tauri-apps/plugin-process';
 
 const version = ref('');
-const greetMsg = ref('');
+const updateStatus = ref('');
+const isChecking = ref(false);
+const isUpdating = ref(false);
 
-async function init() {
+onMounted(async () => {
   version.value = await getVersion();
+});
+
+async function checkForUpdates() {
+  try {
+    isChecking.value = true;
+    updateStatus.value = '正在检查更新...';
+
+    console.log(`output->check`,check)
+    const update = await check();
+    console.log(`output->update`,update)
+    if (update) {
+      console.log(`found update ${update.version} from ${update.date} with notes ${update.body}`);
+      let downloaded = 0;
+      let contentLength = 0;
+      // alternatively we could also call update.download() and update.install() separately
+      await update.downloadAndInstall((event) => {
+        switch (event.event) {
+          case 'Started':
+            contentLength = event.data.contentLength ?? 0;
+            console.log(`started downloading ${event.data.contentLength} bytes`);
+            break;
+          case 'Progress':
+            downloaded += event.data.chunkLength;
+            console.log(`downloaded ${downloaded} from ${contentLength}`);
+            break;
+          case 'Finished':
+            console.log('download finished');
+            break;
+        }
+      });
+
+      console.log('update installed');
+      await relaunch();
+    }
+    updateStatus.value = '更新检查完成';
+  } catch (error) {
+    updateStatus.value = `更新失败: ${error}`;
+  } finally {
+    isChecking.value = false;
+  }
 }
-init();
-async function checkUpdate() {
-  console.log('check_update');
+
+async function getCurrentVersion() {
+  try {
+    const currentVersion = await invoke('get_current_version');
+    version.value = currentVersion as string;
+  } catch (error) {
+    console.error('获取版本失败:', error);
+  }
 }
 </script>
 
 <template>
   <main class="container">
-    <h1>Welcome to Tauri + Vue</h1>
-    <h2>{{ version }}</h2>
+    <h1>欢迎使用 Tauri + Vue</h1>
+    <div class="version-info">
+      <h2>当前版本: {{ version }}</h2>
+      <p class="update-status">{{ updateStatus }}</p>
+    </div>
 
-    <form class="row" @submit.prevent="checkUpdate">
-      <button type="submit">检查版本</button>
-    </form>
+    <div class="actions">
+      <button @click="checkForUpdates" :disabled="isChecking || isUpdating" class="update-btn">
+        {{ isChecking ? '检查中...' : '检查更新' }}
+      </button>
+
+      <button @click="getCurrentVersion" class="version-btn">刷新版本信息</button>
+    </div>
+
+    <div class="info-panel">
+      <h3>更新说明</h3>
+      <ul>
+        <li>点击"检查更新"按钮检查是否有新版本可用</li>
+        <li>如果有更新，系统会自动下载并安装</li>
+        <li>更新完成后应用会自动重启</li>
+        <li>请确保在更新过程中不要关闭应用</li>
+      </ul>
+    </div>
   </main>
 </template>
 
 <style scoped>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #249b73);
-}
-</style>
-<style>
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color: #0f0f0f;
-  background-color: #f6f6f6;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
 .container {
   margin: 0;
-  padding-top: 10vh;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: 0.75s;
-}
-
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #24c8db);
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
 h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.version-info {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-input,
-button {
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.update-status {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.update-btn,
+.version-btn {
+  padding: 0.8em 1.5em;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  color: #0f0f0f;
-  background-color: #ffffff;
-  transition: border-color 0.25s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-button {
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  border-color: #396cd8;
-}
-button:active {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
+.update-btn {
+  background: linear-gradient(45deg, #4caf50, #45a049);
+  color: white;
 }
 
-input,
-button {
-  outline: none;
+.update-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-#greet-input {
-  margin-right: 5px;
+.update-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
+.version-btn {
+  background: linear-gradient(45deg, #2196f3, #1976d2);
+  color: white;
+}
+
+.version-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.info-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 500px;
+  text-align: left;
+}
+
+.info-panel h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.info-panel ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.info-panel li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
 
-  a:hover {
-    color: #24c8db;
+  h1 {
+    font-size: 2rem;
   }
 
-  input,
-  button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
+  .actions {
+    flex-direction: column;
+    align-items: center;
   }
-  button:active {
-    background-color: #0f0f0f69;
+
+  .update-btn,
+  .version-btn {
+    width: 100%;
+    max-width: 300px;
   }
 }
 </style>

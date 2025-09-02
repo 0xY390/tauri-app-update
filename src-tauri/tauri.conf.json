@@ -24,12 +24,14 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": [
-      "icons/32x32.png",
-      "icons/128x128.png",
-      "icons/128x128@2x.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
-    ]
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "endpoints": ["http://localhost:3000/updates?version={{current_version}}&target={{target}}"],
+      "dialog": true,
+      "pubkey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqQzQ4XDCXI9J4uYOfxK53C9AftnGvKr2Xy6LTYD5Ugu1UgM3Dsc2wF7avgyYTqNIOG4sew520sTcNZf5Bm0XOGmYq1Uaa3TlbM+SRMSQ4MMM6QoErhC7wgatARomOS176ZaMCeoFWZOSdgH0e14tAEPBqyLBf31zmpBKSaax36LLzJapAN5OZIyiXeykKDmcTN4aUetuwfiKsI+H2WAtf8YtCVeTXUQN+gNjIsMsxLbCG2KG2HdsFIEd0FP9r/uN3fiIdGBV9X39YSKraoWZ796yCbXommzHhCf5mTbZLFng0Y7SAEUYXBzUNQ+WOdoOGyWQsxwcie1wmU/Tne+/zwIDAQAB"
+    }
   }
 }

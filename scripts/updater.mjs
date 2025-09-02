@@ -6,11 +6,25 @@ import { readFile } from "node:fs/promises";
 const octokit = getOctokit(process.env.GITHUB_TOKEN);
 
 const updateRelease = async () => {
+
+  // 获取当前版本的 tag 名称（去掉 refs/tags/v 前缀）
+  let currentTag;
+  if (context.ref.startsWith('refs/tags/')) {
+    currentTag = context.ref.replace('refs/tags/v', '');
+  } else if (context.eventName === 'release') {
+    // 如果是 release 事件，从 release 信息中获取 tag
+    currentTag = context.payload.release.tag_name.replace('v', '');
+  } else {
+    throw new Error('无法确定版本号');
+  }
+
+  console.log(`output->current tag: ${currentTag}`);
+
   // 获取updater tag的release
   const { data: release } = await octokit.rest.repos.getReleaseByTag({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    tag: "updater",
+    tag: `v${currentTag}`,
   });
   // 删除旧的的文件
   const deletePromises = release.assets

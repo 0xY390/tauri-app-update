@@ -9,8 +9,8 @@ import * as url from 'url';
 import * as http from 'http';
 import * as fs from 'fs';
 
-const signature = 'dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFdJQzhCRThPZ2lURk9VSndYTnM5RklIazFPTU85Y0RQSzcvVDB1RGRRZG1ud1ZIbnErZm1xWlhMTFJLaTNyUW13QjZPMXI5c3NlWno0Q0xrTk1SNHdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODg3NTY4CWZpbGU6dGF1cmktYXBwLXVwZGF0ZV8wLjEuMV9hYXJjaDY0LmRtZwp0ZXUyaUdmTS8rR3VuY3ZybzM0N0wvSDBzTkNBRFhNVlEvY25jSEhITkhId0lxTWNLVWw3MVlRUkk3dWJzRTNBdlRyWE5nQkp5RDNZL2hkbFdGZTVCZz09Cg=='
-const downloadUrl = 'http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg'
+const signature = 'dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFZMbnl2VWVGcyszL0xWQWpPam02TFRER0grdnhkT0xxNGJHTXFXdm1kT2ZNdGZ5VkMzRHhsNUZWMEtmWk13UGt3eUNGaEp5MzBWbE01ZktRTjZ1M3c4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODkzMjY2CWZpbGU6dGF1cmktYXBwLXVwZGF0ZS5hcHAudGFyLmd6CjZ3NWxrSElqYllhSDl5VjJscUFQb3RVNTRzL1h4MDhLVCszMlUzNFBOWHZITDZoTjF4YzhPN2M3dCtCUERqbUtoam1WcTZIK1A0aTdqdVFiOFFXOURnPT0K'
+const downloadUrl = 'http://localhost:3000/downloads/tauri-app-update.app.tar.gz'
 // 模拟的更新数据
 const updateData = {
   "version": "0.1.1",

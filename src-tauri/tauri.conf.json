@@ -31,7 +31,7 @@
       "active": true,
       "endpoints": ["http://localhost:3000/updates?version={{current_version}}&target={{target}}"],
       "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDg1RUQ0REY3QzlBODUzQkIKUldTN1U2ako5MDN0aFFvTmJxb21GdFcwelJlQVl4RWVVLzlYb3cxZDEzNDhiMGsyNGlzeHkwNTEK"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDNENjFFNUZDOTdFQzdFRUEKUldUcWZ1eVgvT1ZoUFMzUzZTYU5nR201QkcvOUFkL3ZUR1lMWDdhNURoZ2g0WjBHWDN3L0RDZmMK"
     }
   }
 }

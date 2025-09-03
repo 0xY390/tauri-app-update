@@ -1,0 +1,31 @@
+{
+  "version": "0.1.1",
+  "notes": "新版本发布！包含以下改进：\n- 优化了应用内更新功能\n- 改进了用户界面设计\n- 修复了已知问题\n- 提升了整体性能",
+  "pub_date": "2024-01-15T10:00:00Z",
+  "platforms": {
+    "darwin-x86_64": {
+      "signature": "这里应该是使用您的私钥签名的字符串，用于验证更新包的完整性",
+      "url": "https://your-update-server.com/releases/tauri-app-update-v0.2.0.dmg"
+    },
+    "darwin-aarch64": {
+      "signature": "这里应该是使用您的私钥签名的字符串，用于验证更新包的完整性",
+      "url": "https://your-update-server.com/releases/tauri-app-update-v0.2.0.dmg"
+    },
+    "linux-x86_64": {
+      "signature": "这里应该是使用您的私钥签名的字符串，用于验证更新包的完整性",
+      "url": "https://your-update-server.com/releases/tauri-app-update-v0.2.0.AppImage"
+    },
+    "linux-aarch64": {
+      "signature": "这里应该是使用您的私钥签名的字符串，用于验证更新包的完整性",
+      "url": "https://your-update-server.com/releases/tauri-app-update-v0.2.0.AppImage"
+    },
+    "windows-x86_64": {
+      "signature": "这里应该是使用您的私钥签名的字符串，用于验证更新包的完整性",
+      "url": "https://your-update-server.com/releases/tauri-app-update-v0.2.0.msi"
+    },
+    "windows-aarch64": {
+      "signature": "这里应该是使用您的私钥签名的字符串，用于验证更新包的完整性",
+      "url": "https://your-update-server.com/releases/tauri-app-update-v0.2.0.msi"
+    }
+  }
+}

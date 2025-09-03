@@ -17,32 +17,32 @@ const updateData = {
   "platforms": {
     "darwin-x86_64": {
       "version": "0.1.1",
-      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFlPT2lVWkNZSnRhUnJDNXM5YkVjcUxPM2lYOGZHOW5KZlI0VTFmcC9MSW1ldCtydjQrQ0RBb291Ulh1UDJtazZoWmx5bWpoamRZMi9sTy92dG91MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODgzNDI4CWZpbGU6dGF1cmktYXBwLXVwZGF0ZV8wLjEuMV9hYXJjaDY0LmRtZwplQWFWQWVHeVEyTWorVWR6d0NLYm5SVFNJeEhLTG9IL0VwSFY2MVhVOU9VMC9pWTVtMFpLekRFQ0w4VkJOcU01Q0FLcE1jMVV5VC9USndybXpyd2ZEdz09Cg==",
       "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "darwin-aarch64": {
       "version": "0.1.1",
-      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFlPT2lVWkNZSnRhUnJDNXM5YkVjcUxPM2lYOGZHOW5KZlI0VTFmcC9MSW1ldCtydjQrQ0RBb291Ulh1UDJtazZoWmx5bWpoamRZMi9sTy92dG91MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODgzNDI4CWZpbGU6dGF1cmktYXBwLXVwZGF0ZV8wLjEuMV9hYXJjaDY0LmRtZwplQWFWQWVHeVEyTWorVWR6d0NLYm5SVFNJeEhLTG9IL0VwSFY2MVhVOU9VMC9pWTVtMFpLekRFQ0w4VkJOcU01Q0FLcE1jMVV5VC9USndybXpyd2ZEdz09Cg==",
       "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "linux-x86_64": {
       "version": "0.1.1",
-      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFlPT2lVWkNZSnRhUnJDNXM5YkVjcUxPM2lYOGZHOW5KZlI0VTFmcC9MSW1ldCtydjQrQ0RBb291Ulh1UDJtazZoWmx5bWpoamRZMi9sTy92dG91MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODgzNDI4CWZpbGU6dGF1cmktYXBwLXVwZGF0ZV8wLjEuMV9hYXJjaDY0LmRtZwplQWFWQWVHeVEyTWorVWR6d0NLYm5SVFNJeEhLTG9IL0VwSFY2MVhVOU9VMC9pWTVtMFpLekRFQ0w4VkJOcU01Q0FLcE1jMVV5VC9USndybXpyd2ZEdz09Cg==",
       "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "linux-aarch64": {
       "version": "0.1.1",
-      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFlPT2lVWkNZSnRhUnJDNXM5YkVjcUxPM2lYOGZHOW5KZlI0VTFmcC9MSW1ldCtydjQrQ0RBb291Ulh1UDJtazZoWmx5bWpoamRZMi9sTy92dG91MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODgzNDI4CWZpbGU6dGF1cmktYXBwLXVwZGF0ZV8wLjEuMV9hYXJjaDY0LmRtZwplQWFWQWVHeVEyTWorVWR6d0NLYm5SVFNJeEhLTG9IL0VwSFY2MVhVOU9VMC9pWTVtMFpLekRFQ0w4VkJOcU01Q0FLcE1jMVV5VC9USndybXpyd2ZEdz09Cg==",
       "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "windows-x86_64": {
       "version": "0.1.1",
-      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFlPT2lVWkNZSnRhUnJDNXM5YkVjcUxPM2lYOGZHOW5KZlI0VTFmcC9MSW1ldCtydjQrQ0RBb291Ulh1UDJtazZoWmx5bWpoamRZMi9sTy92dG91MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODgzNDI4CWZpbGU6dGF1cmktYXBwLXVwZGF0ZV8wLjEuMV9hYXJjaDY0LmRtZwplQWFWQWVHeVEyTWorVWR6d0NLYm5SVFNJeEhLTG9IL0VwSFY2MVhVOU9VMC9pWTVtMFpLekRFQ0w4VkJOcU01Q0FLcE1jMVV5VC9USndybXpyd2ZEdz09Cg==",
       "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "windows-aarch64": {
       "version": "0.1.1",
-      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUcWZ1eVgvT1ZoUFlPT2lVWkNZSnRhUnJDNXM5YkVjcUxPM2lYOGZHOW5KZlI0VTFmcC9MSW1ldCtydjQrQ0RBb291Ulh1UDJtazZoWmx5bWpoamRZMi9sTy92dG91MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzU2ODgzNDI4CWZpbGU6dGF1cmktYXBwLXVwZGF0ZV8wLjEuMV9hYXJjaDY0LmRtZwplQWFWQWVHeVEyTWorVWR6d0NLYm5SVFNJeEhLTG9IL0VwSFY2MVhVOU9VMC9pWTVtMFpLekRFQ0w4VkJOcU01Q0FLcE1jMVV5VC9USndybXpyd2ZEdz09Cg==",
       "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     }
   }

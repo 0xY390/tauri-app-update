@@ -11,33 +11,39 @@ import * as fs from 'fs';
 
 // 模拟的更新数据
 const updateData = {
-  "version": "0.2.0",
+  "version": "0.1.1",
   "notes": "新版本发布！包含以下改进：\n- 优化了应用内更新功能\n- 改进了用户界面设计\n- 修复了已知问题\n- 提升了整体性能",
   "pub_date": new Date().toISOString(),
   "platforms": {
     "darwin-x86_64": {
-      "signature": "模拟签名 - 在实际使用中应该是真实的RSA签名",
-      "url": "http://localhost:3000/downloads/app-v0.2.0.dmg"
+      "version": "0.1.1",
+      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "darwin-aarch64": {
-      "signature": "wpNsg5J1/oqbhdpFANxWzAjsFUNfSh6KCxtTyqL2qx88z7E3gLV20gFT1N4UnsqQB7VL9L5DPD+iLQq3Kn2KydQZzYOztfvnlTPRy71v7Uun8pXXgKOSOv4G+uKGUtsHNYWeScEWKQgtSQeMBOl05dfUZbuQovX9zhfKMVznwVABAt4WCUuxoh8HXSkZxA3x5IHUIJ+lo2YR/g2V/nf4EW8k9cXogYBndHYkYtO6hhZLQ7HYjRSX5rcwn57utH8ulVVn8Yd1SA1EBwcgZjA+INXocejLrw4PcQwgxK3IXtU0NzEHRPDz+/EMlqyPrVWem8lHSgm3DHutZp/jjEROvw==",
-      "url": "http://localhost:3000/downloads/tauri-app-update_0.2.0_aarch64.dmg"
+      "version": "0.1.1",
+      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "linux-x86_64": {
-      "signature": "模拟签名 - 在实际使用中应该是真实的RSA签名",
-      "url": "http://localhost:3000/downloads/app-v0.2.0.AppImage"
+      "version": "0.1.1",
+      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "linux-aarch64": {
-      "signature": "模拟签名 - 在实际使用中应该是真实的RSA签名",
-      "url": "http://localhost:3000/downloads/app-v0.2.0.AppImage"
+      "version": "0.1.1",
+      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "windows-x86_64": {
-      "signature": "模拟签名 - 在实际使用中应该是真实的RSA签名",
-      "url": "http://localhost:3000/downloads/app-v0.2.0.msi"
+      "version": "0.1.1",
+      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     },
     "windows-aarch64": {
-      "signature": "模拟签名 - 在实际使用中应该是真实的RSA签名",
-      "url": "http://localhost:3000/downloads/app-v0.2.0.msi"
+      "version": "0.1.1",
+      "signature": "5mfNkswhMpmURmYldFbdgMMjTc+P/wwQqm5XcLPeI2oKtdAY0juzUuutrsfBjVPelyuBCRYFFnPv9Fz/m4Wm7jfGJ89sN8EAubVqBEp+lMZ4n4hEF3uXt4/uOtYl8iB30aHpvHVSEPmA2LSjcsu3XEvsTNNbvGZ5/k3tikYIept2c4hP9bgCKwauEOgZ7qBq7S+b8uyzDNmm4jJG7FmCTfKHKeFXdi4wTj/ZSmeIkUM50vse5EP199Uixcj462fMZamuRdRUM0S/HGNwRqQlGbeiKZk+gSBjy6+XXcq/jGQDWy07O1TmE1/z/eeQ/+pqaYkqrZHd1rTQYTD6IqC+dw==",
+      "url": "http://localhost:3000/downloads/tauri-app-update_0.1.1_aarch64.dmg"
     }
   }
 };
@@ -69,7 +75,7 @@ const server = http.createServer((req, res) => {
     if (currentVersion !== updateData.version) {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(updateData, null, 2));
-      console.log('✅ 返回更新信息');
+      console.log('✅ 返回更新信息', updateData);
     } else {
       res.writeHead(404, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'No updates available' }));
@@ -80,19 +86,26 @@ const server = http.createServer((req, res) => {
 
   // 处理下载请求（模拟）
   if (parsedUrl.pathname.startsWith('/downloads/') && req.method === 'GET') {
-    const filename = 'tauri-app-update_0.2.0_aarch64.dmg';
-    // const filename = parsedUrl.pathname.split('/').pop();
+    const filename = parsedUrl.pathname.split('/').pop();
     console.log(`📥 下载请求: ${filename}`);
+
+    // 检查文件是否存在
+    const filePath = `./downloads/${filename}`;
+    if (!fs.existsSync(filePath)) {
+      console.log(`❌ 文件不存在: ${filePath}`);
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end(`File not found: ${filename}`);
+      return;
+    }
 
     res.writeHead(200, {
       'Content-Type': 'application/octet-stream',
       'Content-Disposition': `attachment; filename="${filename}"`
     });
 
-    // 返回一个简单的文件内容（实际使用中应该是真实的安装包）
-    // res.end(`这是 ${filename} 的模拟内容。在实际使用中，这里应该是真实的安装包文件。`);
-    // 将/downloads/tauri-app-update_0.2.0_aarch64.dmg 文件返回
-    res.end(fs.readFileSync(`./downloads/${filename}`));
+    // 读取并返回文件内容
+    res.end(fs.readFileSync(filePath));
+    console.log(`✅ 文件发送成功: ${filename}`);
     return;
   }
 
@@ -125,7 +138,7 @@ const server = http.createServer((req, res) => {
         <div class="endpoint">
             <h3>下载更新包</h3>
             <p><code>GET /downloads/{filename}</code></p>
-            <p>示例: <code>GET /downloads/app-v0.2.0.dmg</code></p>
+            <p>示例: <code>GET /downloads/app-v0.1.1.dmg</code></p>
         </div>
         
         <h2>🔧 配置说明</h2>

@@ -5,7 +5,7 @@
 
 if [ $# -ne 1 ]; then
     echo "用法: $0 <更新包路径>"
-    echo "示例: $0 ./downloads/tauri-app-update_0.2.0_aarch64.dmg"
+    echo "示例: $0 ./downloads/tauri-app-update_0.1.1_aarch64.dmg"
     exit 1
 fi
 

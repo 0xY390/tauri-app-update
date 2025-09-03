@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "tauri-app-update",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "identifier": "com.harley.tauri-app-update",
   "build": {
     "beforeDevCommand": "pnpm dev",
@@ -31,7 +31,7 @@
       "active": true,
       "endpoints": ["http://localhost:3000/updates?version={{current_version}}&target={{target}}"],
       "dialog": true,
-      "pubkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5uRqL2fGh6/E7ssFS6Qv\nb/Sk1kI6jiNfwNARJsX5GAs5HFziWCH1jiIres4/MOjb59u1algTT86HxMxehFwR\nGqR1C1r9tWr0Tu2SQaft9wMlfgCpGv7uOfupNICDQY7dwxj6zsO5Z/7ueiyh55Di\nex77tlIcQxde2bL1ffwi6c+GFuvipm82eeZ/OubIbvv9p4ZCTFnQjMXr4P9lD+CK\nZXY4mugR4+TjAdg4PWfjfZuUYz0a1+n/oEuHSu6VJanb0Vil3whQthyiguUnxQF6\nqORDBqya9t0gDyx+8yPH+fECS7tSKG5Qm01Y4YYGfm6OtnO/wq15tu649Djttpnp\nDQIDAQAB\n-----END PUBLIC KEY-----"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDg1RUQ0REY3QzlBODUzQkIKUldTN1U2ako5MDN0aFFvTmJxb21GdFcwelJlQVl4RWVVLzlYb3cxZDEzNDhiMGsyNGlzeHkwNTEK"
     }
   }
 }

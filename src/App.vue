@@ -25,24 +25,15 @@ async function checkForUpdates() {
     if (update) {
       // await update.downloadAndInstall()
       console.log(`found update ${update.version} from ${update.date} with notes ${update.body}`);
-      let downloaded = 0;
-      let contentLength = 0;
+      // let downloaded = 0;
+      // let contentLength = 0;
       // alternatively we could also call update.download() and update.install() separately
-      await update.downloadAndInstall((event) => {
-        switch (event.event) {
-          case 'Started':
-            contentLength = event.data.contentLength ?? 0;
-            console.log(`started downloading ${event.data.contentLength} bytes`);
-            break;
-          case 'Progress':
-            downloaded += event.data.chunkLength;
-            console.log(`downloaded ${downloaded} from ${contentLength}`);
-            break;
-          case 'Finished':
-            console.log('download finished');
-            break;
-        }
-      });
+      // await update.downloadAndInstall();
+
+      console.log(`downloading update ${update.version}`);
+      await update.download();
+      console.log(`installing update ${update.version}`);
+      await update.install();
 
       console.log('update installed');
       await relaunch();
